@@ -6,7 +6,7 @@ menu:
 description: Troubleshooting LoRa App Server (application-server) related issues.
 ---
 
-# Troubleshooting application-server issues
+# application-server 应用服务器故障排除
 
 This guide helps you to troubleshoot application-server related connectivity issues.
 This guide assumes that your gateway is connected, the LoRa Gateway Bridge
@@ -25,7 +25,7 @@ In this guide we will validate:
 * If the application payload is succesfully published over MQTT
 * If the web-interface is able to connect to the WebSocket API
 
-## LoRa App Server receives data?
+## LoRa App Server 应用服务器接收数据
 
 
 To find out if [LoRa App Server](/lora-app-server/) is receiving messages from 
@@ -46,12 +46,12 @@ In the above log, LoRa App Server received an uplink application-payload from
 LoRa Server and published this payload to the `application/1/device/0101010101010101/rx`
 MQTT topic.
 
-### No log output?
+### 没有日志输出？
 
 Please refer to the [Network-server debugging guide]({{<relref "network-server.md">}})
 to confirm data is sent to LoRa App Server on receiving an uplink payload.
 
-## LoRa App Server publised data?
+## LoRa App Server 发布数据？
 
 If you have confirmed that LoRa App Server has received the uplink payload
 from LoRa Server and has published this to the MQTT broker, then you can
@@ -68,7 +68,7 @@ to the MQTT topic **and** the `mosquitto_sub` client is authorized to subscribe
 to the given MQTT topic. This issue usually happens when you have configured
 your MQTT broker so that clients need to authenticate when connecting.
 
-## Published payload is invalid
+## 发布的 payload 不合规
 
 First make sure you understand that the published payload is in [Base64](https://en.wikipedia.org/wiki/Base64)
 encoding. This is an encoding to represent bytes as a string. Therefore you
@@ -77,9 +77,9 @@ first need to Base64 decode the payload to get the original slice of bytes.
 In case the received payload still does not match the payload sent, make sure
 the `AppSKey` is set correctly in case of an ABP device.
 
-## Live device data / LoRaWAN frames issues
+## 节点实时数据  / LoRaWAN 帧 问题
 
-### Frames under gateway, but not under device
+### 网关下有帧数据，节点下没有
 
 Please note that **all** received LoRaWAN frames are displayed on the gateway
 page, but only the authenticated LoRaWAN frames are displayed on the device
@@ -88,7 +88,7 @@ on the device page, then there is likely a MIC or frame-counter error in you
 LoRa Server logs. Please refer to the [Debugging network-server issues]({{<relref "network-server.md">}})
 guide.
 
-### Not connected to WebSocket API error
+### 没有连接到 WebSocket 接口的错误
 
 This means that your browser is unable to connect to the WebSocket API.
 When your browser is able to render the web-interface, then this is likely

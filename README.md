@@ -1,24 +1,22 @@
 # docs.loraserver.io
 
-This repository contains the global LoRa Server project documentation.
+本repo包含LoRa Server项目文档。
 
 ## Build
 
-[Hugo](http://gohugo.io/) is needed to transform the Markdown formatted
-documentation into HTML.
+需要[Hugo](http://gohugo.io/)把MarkDown文件转为HTML文件。
 
-### Install Hugo
+### 安装 Hugo
 
-Please refer to the Hugo website for binaries, or install Hugo from source:
+从Hugo网站下载二进制文件，或直接从源码编译安装：
 
 ```bash
 go get -v github.com/spf13/hugo
 ```
 
-### Start Hugo
+### 启动 Hugo
 
-To start Hugo as a web-server (auto-refreshing on file-change), run the
-following command from the root of this repository:
+启动Hugo，从本 repo 根目录执行以下命令即可：
 
 ```bash
 hugo server -w

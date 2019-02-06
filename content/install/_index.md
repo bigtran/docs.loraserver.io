@@ -7,4 +7,4 @@ menu:
 hidden: true
 ---
 
-# LoRa Server project installation
+# LoRa Server 安装

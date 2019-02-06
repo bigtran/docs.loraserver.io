@@ -7,7 +7,7 @@ menu:
 description: When you have the LoRa Server project components up & running, this guide helps you getting started with your first gateway and device.
 ---
 
-# Getting started
+# 第一台网关 起步
 
 After all components are installed, you should be able to navigate to the
 LoRa App Server web-interface. 
@@ -22,14 +22,14 @@ else use the http:// option (default). Examples:
 * **http://** [http://localhost:8080/](http://localhost:8080/)
 * **https://** [https://localhost:8080/](https://localhost:8080/)
 
-## Login
+## 登录
 
 The default login credentials are:
 
 * Username: admin
 * Password: admin
 
-## Add a gateway
+## 添加网关
 
 There are two steps involved when adding a gateway. First of all, you need
 to configure your gateway so that it sends data to the
@@ -49,7 +49,7 @@ this, log in into the [LoRa App Server](/lora-app-server/)
 web-interface and add the gateway to your organization. In case your gateway
 does not have a GPS, you can set the location manually.
 
-## Setting up your first device
+## 配置第一个节点
 
 Now all components are installed, you should be able to navigate to the
 LoRa App Server web-interface. 
@@ -60,7 +60,7 @@ can be modified through the `lora-app-server.toml` configuration file).
 
 Example: [https://localhost:8080/](https://localhost:8080/). 
 
-### Add network-server
+### 添加网络服务器
 
 In order to connect your LoRa App Server instance with the LoRa Server instance,
 click *Network servers* and then *Add*. As LoRa Server is installed
@@ -71,14 +71,14 @@ this can be modified through `loraserver.toml`).
 Note that LoRa App Server can connect to multiple LoRa Server instances.
 For example each LoRa Server instance could support a different region.
 
-### Service-profile
+### 服务配置 Service-profile
 
 The service-profile defines the features that can be used by an organization.
 Click on *Service-profiles* and then *Create* to create a service-profile
 for the LoRa Server organization. This will also associate the organization
 with the network-server instance.
 
-### Device-profile
+### 节点配置 Device-profile
 
 The device-profile defines the device properties of a device. For example
 it defines the activation type (OTAA vs ABP), the implemented LoRaWAN 
@@ -87,7 +87,7 @@ version etc...
 Click on *Device-profiles* and then *Create* to create a device-profile for
 the LoRa Server organization.
 
-### Application
+### 应用 Application
 
 Now that LoRa App Server is associated with the LoRa Server instance, the
 organization has a service-profile and device-profile, it is time to create
@@ -97,14 +97,14 @@ Click on *Applications*, then click on *Create*. Once the application has
 been created, click on the created application to see the list of
 devices associated with this application.
 
-### Device
+### 节点 Device
 
 Under the *Devices* tab, click on the *Create* button to create a new device.
 In case of an OTAA device, after creating the device you will be redirected
 to a page where you can enter the root key(s). In case of an ABP device,
 you will be redirect to a page where you can enter the session keys.
 
-### Receive data
+### 接收的数据 Receive data
 
 It is possible to stream all LoRaWAN frames (raw and encrypted data) and
 device data from the web-interface. Click on the created device and click on

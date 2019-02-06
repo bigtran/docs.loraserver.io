@@ -7,7 +7,7 @@ menu:
 description: Links to community projects extending or integrating the LoRa Server project.
 ---
 
-# Links
+# 链接
 
 ## Community
 

@@ -7,7 +7,7 @@ menu:
 description: Quickstart guide on hosting the LoRa Server components on Google Cloud Platform.
 ---
 
-# Quickstart Google Cloud Platform
+# Google Cloud Platform 快速起步
 
 This tutorial describes the steps needed to setup the LoRa Server project
 on the [Google Cloud Platform](https://cloud.google.com/). The following
@@ -27,7 +27,7 @@ Google Cloud Platform (GCP) services will be used:
 * [Compute Engine](https://cloud.google.com/compute/) is used for launcing
   a VM instance.
 
-## Assumptions
+## 美好的架设
 
 * In this tutorial we will assume that the [LoRa Gateway Bridge](/lora-gateway-bridge/)
   component will be installed on the gateway. We will also assume that
@@ -38,27 +38,27 @@ Google Cloud Platform (GCP) services will be used:
 * The LoRaWAN region used in this tutorial will be `eu868`, you can substitute
   this with your own region in the examples.
 
-## Requirements
+## 安装环境需求
 
 * Google Cloud Platform account. You can create one [here](https://cloud.google.com/).
 * LoRa gateway.
 * LoRaWAN device.
 
-## Create GCP project
+## 创建 GCP 项目
 
 After logging in into the GCP console, create a new project. For this tutorial
 we will name the project `LoRa Server tutorial` with as ID
 `lora-server-tutorial`. After creating the project, make sure it is selected
 before continuing with the next steps.
 
-## Gateway connectivity
+## 网关连接
 
 The [LoRa Gateway Bridge](/lora-gateway-bridge/) will use the
 [Cloud IoT Core](https://cloud.google.com/iot-core/) MQTT interface to ingest
 LoRa gateway events into the Google Cloud Platform. This removes the requirement
 to host your own MQTT broker and increases the scalability.
 
-### Create device registry
+### 新建节点注册
 
 In order to connect your LoRa gateway with the [Cloud IoT Core](https://cloud.google.com/iot-core/)
 component (using the MQTT bridge), go to the **IoT Core** service in the GCP
@@ -75,7 +75,7 @@ to you and select **MQTT** as protocol. The **HTTP** protocol will not be used.
 Under **Default telemetry topic** create a new topic. We will call this
 `eu868-gateway-events`. Click on **Create**.
 
-### Create LoRa gateway certificate
+### 创建网关认证
 
 In order to authenticate the LoRa gateway with the Cloud IoT Core MQTT bridge,
 you need to generate a certificate. You can do this using the following
@@ -88,7 +88,7 @@ openssl rsa -in private-key.pem -pubout -outform PEM -out public-key.pem
 
 Do **not** set a passphrase!
 
-### Add device (LoRa gateway)
+### 添加设备 (LoRa gateway)
 
 To add your first LoRa gateway to the just created device registry, click on
 the **create device** button.
@@ -103,7 +103,7 @@ Select **RS256** as **Public key format** and paste the public-key content in th
 This is the content of `public-key.pem` which was created in the previous step.
 Click on **Create**.
 
-### Configure LoRa Gateway Bridge
+### 配置 LoRa Gateway Bridge
 
 As there are different ways to install the [LoRa Gateway Bridge](/lora-gateway-bridge/)
 on your gateway, only the configuration is covered here. For installation instructions,
@@ -154,7 +154,7 @@ INFO[0045] mqtt: publishing message                      qos=0 topic=/devices/gw
 
 Your gateway is now communicating succesfully with the Cloud IoT Core MQTT bridge!
 
-### Create downlink Pub/Sub topic
+### 创建下行 Pub/Sub topic
 
 Instead of MQTT, [LoRa Server](/loraserver/) will use [Cloud Pub/Sub](https://cloud.google.com/pubsub/)
 for receiving data from your gateways and sending data back.
@@ -167,7 +167,7 @@ For sending data back to your gateways, we will create a new topic called
 `eu868-gateway-commands`. Click on **Create Topic**, enter the name of the
 topic and click on **Create**.
 
-### Create downlink Cloud Function
+### 创建 下行 Cloud Function
 
 In the previous step you have created a topic for sending downlink commands
 to your gateways. In order to connect this Pub/Sub topic with your
@@ -274,9 +274,9 @@ exports.sendMessage = (event, context, callback) => {
 }
 {{< /highlight >}}
 
-## Setup databases
+## 配置数据库
 
-### Create Redis datastore
+### 创建 Redis datastore
 
 In the GCP console, navigate to **Memorystore** (which provides a managed
 Redis datastore) and click **Create instance**.
@@ -284,7 +284,7 @@ Redis datastore) and click **Create instance**.
 You can assign any name to this instance. Make sure that you also select your
 **Region**. Click **Create** to create the Redis instance.
 
-### Create PostgreSQL databases
+### 创建 PostgreSQL 数据库
 
 In the GCP console, navigate to **SQL** (which provides managed PostgreSQL
 database instances) and click **Create instance**.
@@ -298,7 +298,7 @@ is already sufficient for testing). An important option to configure is
 `0.0.0.0/0`. It is recommended to re-configure this afterwards to the IP
 address of your server (covered in the next steps). Then click **Create**.
 
-#### Create users
+#### 创建用户
 
 Click on the created database instance and click on the **Users** tab.
 Create two users:
@@ -306,14 +306,14 @@ Create two users:
 * `loraserver_ns`
 * `loraserver_as`
 
-#### Create databases
+#### 创建数据库
 
 Click on the **Databases** tab. Create the following databases:
 
 * `loraserver_ns`
 * `loraserver_as`
 
-#### Enable trgm extension
+#### 使能 trgm 扩展
 
 In the PostgreSQL instance **Overview** tab, click on **Connect using Cloud Shell**
 and when the `gcloud sql connect ...` commands is shown in the console,
@@ -336,14 +336,14 @@ create extension pg_trgm;
 
 You can close the Cloud Shell.
 
-## Install LoRa Server
+## 安装 LoRa Server
 
 When you have succesfully completed the previous steps, then your gateway is
 connected to the Cloud IoT Core MQTT bridge, are all LoRa (App) Server 
 requirements setup and is it time to install [LoRa Server](/loraserver/) and
 [LoRa App Server](/lora-app-server/).
 
-### Create VM instance
+### 创建虚拟机实例 VM instance
 
 In the GCP console, navigate to **Compute Engine > VM instances** and click
 on **Create**.
@@ -378,7 +378,7 @@ Enter the following details:
 
 Then click on **Create**.
 
-### Compute Engine service account roles
+### Compute Engine 服务账户角色
 
 As the Compute Engine instance (created in the previous step) needs to
 be able to subscribe to the Pub/Sub data, we must assign give the
@@ -390,14 +390,14 @@ default service account**. Click **Add another role** and add the following role
 * `Pub/Sub Publisher`
 * `Pub/Sub Subscriber`
 
-### Login into VM instance
+### 登入虚拟机实例 VM instance
 
 You will find the public IP address of the created VM instance under
 **Compute Engine > VM instances**. When you have configured your public SSH key,
 you should be able to login using a SSH client. Alternatively, you could use
 SSH web-client provided by the GCP console.
 
-### Configure the LoRa Server repository
+### 配置 LoRa Server 仓库
 
 Execute the following commands to add the LoRa Server repository to your VM
 instance:
@@ -416,7 +416,7 @@ sudo echo "deb https://artifacts.loraserver.io/packages/2.x/deb stable main" | s
 sudo apt update
 {{< /highlight >}}
 
-### Install LoRa Server
+### 安装网络服务器 LoRa Server
 
 Execute the following command to install the LoRa Server service:
 
@@ -424,7 +424,7 @@ Execute the following command to install the LoRa Server service:
 sudo apt install loraserver
 {{< /highlight >}}
 
-#### Configure LoRa Server
+#### 配置网络服务器 LoRa Server
 
 The LoRa Server configuration file is located at
 `/etc/loraserver/loraserver.toml`. Below you will find two (minimal but working)
@@ -470,7 +470,7 @@ sudo systemctl start loraserver
 sudo systemctl enable loraserver
 {{< /highlight >}}
 
-##### EU868 configuration example
+##### EU868 配置示例
 
 {{<highlight toml>}}
 [postgresql]
@@ -501,7 +501,7 @@ net_id="000000"
     downlink_topic_name="eu868-gateway-commands"
 {{< /highlight>}}
 
-##### US915 configuration example
+##### US915 配置示例
 
 {{<highlight toml>}}
 [postgresql]
@@ -533,19 +533,19 @@ net_id="000000"
     downlink_topic_name="eu868-gateway-commands"
 {{< /highlight>}}
 
-### Install LoRa App Server
+### 安装应用服务器 LoRa App Server
 
 When you have completed all previous steps, then it is time to install the
 last component, [LoRa App Server](/lora-app-server/). This is the
 application-server that provides a web-interface for device management and
 will publish application-data to a Pub/Sub topic.
 
-#### Create Pub/Sub topic
+#### 创建MQTT主题 Pub/Sub topic
 
 In the GCP console, navigate to **Pub/Sub > Topics**. Then click on the
 **Create topic** button to create a topic named `lora-app-server`.
 
-#### Install LoRa App Server
+#### 安装应用服务器 LoRa App Server
 
 In your SSH client, execute the following command to install LoRa App Server:
 
@@ -554,7 +554,7 @@ sudo apt install lora-app-server
 {{< /highlight >}}
 
 
-#### Configure LoRa App Server
+#### 配置应用服务器 LoRa App Server
 
 The LoRa App Server configuration file is located at
 `/etc/lora-app-server/lora-app-server.toml`. Below you will find a minimal
@@ -597,7 +597,7 @@ sudo systemctl start lora-app-server
 sudo systemctl enable lora-app-server
 {{< /highlight >}}
 
-##### Configuration example
+##### 配置示例
 
 {{<highlight toml>}}
 [postgresql]
@@ -620,15 +620,15 @@ url="redis://[REDIS_IP]:6379"
   jwt_secret="[JWT_SECRET]"
 {{< /highlight >}}
 
-## Getting started
+## 起步
 
-### Setup your first gateway and device
+### 配置第一个网关和节点
 
 To get started with LoRa (App) Server, please follow the [First gateway and device]({{<relref "first-gateway-device.md">}})
 guide. It will explain how to login into the web-interface and add your first
 gateway and device.
 
-### Integrate your applications
+### 集成应用
 
 In the LoRa App Server step, you have created a Pub/Sub topic named
 `lora-app-server`. This will be the topic used by LoRa Server for publishing

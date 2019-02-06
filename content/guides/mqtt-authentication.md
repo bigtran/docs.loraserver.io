@@ -7,7 +7,7 @@ menu:
 description: Guide on how to setup MQTT (Mosquitto) topic-based authentication and authorization.
 ---
 
-# MQTT authentication & authorization
+# MQTT 身份验证与授权
 
 The LoRa Server project does not handle MQTT authentication and authorization
 for you, this is the responsibility of the MQTT broker. To restrict gateways
@@ -29,13 +29,13 @@ with their own credentials when connecting the MQTT broker and are limited to
 the applications to which they have access (in the LoRa App Server
 web-interface).
 
-### Static password and ACL file
+### 静态密码和ACL文件 Static password and ACL file
 
 These steps describe how to setup Mosquitto with a static password and ACL
 file. In case you would like to setup Mosquitto so that users and permissions
 are retrieved from LoRa App Server, go to the next sections for instruction on how to configure Mosquitto Auth Plugin or the alternative Mosquitto Go Auth.
 
-#### Passwords
+#### 密码
 
 Using the `mosquitto_passwd` command, it is possible to create a password file
 for authentication.
@@ -94,7 +94,7 @@ The access parameter for each topic can be `read`, `write` or `readwrite`.
 Note that `+` is a wildcard character (e.g. all gateways, applications or
 devices in the above example).
 
-#### Mosquitto configuration
+#### Mosquitto 配置
 
 Then add a new configuration file called `/etc/mosquitto/conf.d/auth.conf` with
 the following configuration:
@@ -105,7 +105,7 @@ password_file /etc/mosquitto/passwd
 acl_file /etc/mosquitto/acls
 {{< /highlight >}}
 
-### Mosquitto Auth Plugin
+### Mosquitto Auth 插件
 
 To setup Mosquitto so that it retrieves the users and permissions from the
 [LoRa App Server](/lora-app-server/) database, you need to setup the
@@ -114,7 +114,7 @@ plugin. This project provides authentication and authorization to Mosquitto
 using various backends. In our case we're interested in the PostgreSQL and
 files backend.
 
-#### Compile mosquitto-auth-plug
+#### 编译 mosquitto-auth-plug
 
 Before the mosquitto-auth-plugin can be compiled, you need to install the
 following requirements (can be installed using `sudo apt-get install ...`):
@@ -171,7 +171,7 @@ cd /opt/mosquitto-auth-plug
 sudo make
 {{< /highlight >}}
 
-#### Configure mosquitto-auth-plug
+#### 配置 mosquitto-auth-plug
 
 Create a directory and empty files for additional static passwords and ACLs:
 
@@ -211,7 +211,7 @@ You might want to change the following configuration, to match your
 * `auth_opt_user`: database username
 * `auth_opt_pass`: database password
 
-#### Static passwords
+#### 静态密码 Static passwords
 
 As [LoRa Gateway Bridge](/lora-gateway-bridge/), [LoRa Server](/loraserver/)
 and [LoRa App Server](/lora-app-server/) also make use of MQTT, you might want
@@ -244,7 +244,7 @@ loraserver_ns:PBKDF2$sha256$100000$jXjd9LKwjkLhec/m$qwhGxiPON/tKCXcfS6fpfAr1xQec
 loraserver_as:PBKDF2$sha256$100000$AC51663HqjWlPisA$uV4WQmy0c6nMsLwEffXUeVqIFRDb4Y+h
 {{< /highlight >}}
 
-#### Static ACLs
+#### 静态ACLs Static ACLs
 
 For the static passwords created in the previous step, you probably want to
 limit these logins to a certain set of topics. For this you can add ACL rules
@@ -277,11 +277,11 @@ topic write application/+/device/+/location
 {{< /highlight >}}
 
 
-### Alternative plugin: Mosquitto Go Auth
+### 替代插件：Mosquitto Go Auth
 
 An alternative to the mosquitto auth plugin is [mosquitto-go-auth](https://github.com/iegomez/mosquitto-go-auth). It also provides authentication and authorization to Mosquitto, and the most relevant differences are that it's written in Go (easy to extend and build) and that it provides a local JWT backend. It may be used **instead** of mosquitto-auth-plug.
 
-#### Build
+#### 编译
 
 This package needs Go to be built. Check https://golang.org/dl/ for instructions on installing Go.
 
@@ -296,7 +296,7 @@ make requirements
 
 Now we need to create the `go-auth.so` shared object and the `pw` binary utility.
 
-##### Build for mosquitto 1.4.x
+##### mosquitto 1.4.x 下的编译
 
 Compile the plugin with:
 
@@ -304,7 +304,7 @@ Compile the plugin with:
 make
 {{< /highlight >}}
 
-##### Build for mosquitto 1.5.x
+##### mosquitto 1.5.x 下的编译
 
 
 Export needed flags and compile the plugin with:
@@ -315,7 +315,7 @@ export CGO_LDFLAGS="-shared"
 make
 {{< /highlight >}}
 
-#### Configure mosquitto-go-auth
+#### 配置 mosquitto-go-auth
 
 Create a directory and empty files for additional static passwords and ACLs:
 
@@ -385,7 +385,7 @@ Finally, add the following to the end of `/etc/mosquitto/mosquitto.conf` to incl
 include_dir /etc/mosquitto/conf.d
 {{< /highlight >}}
 
-#### Static passwords
+#### 静态密码 Static passwords
 
 As [LoRa Gateway Bridge](/lora-gateway-bridge/), [LoRa Server](/loraserver/)
 and [LoRa App Server](/lora-app-server/) also make use of MQTT, you might want
@@ -417,7 +417,7 @@ loraserver_ns:PBKDF2$sha256$100000$jXjd9LKwjkLhec/m$qwhGxiPON/tKCXcfS6fpfAr1xQec
 loraserver_as:PBKDF2$sha256$100000$AC51663HqjWlPisA$uV4WQmy0c6nMsLwEffXUeVqIFRDb4Y+h
 {{< /highlight >}}
 
-#### Static ACLs
+#### 静态ACLs （Static ACLs）
 
 For the static passwords created in the previous step, you probably want to
 limit these logins to a certain set of topics. For this you can add ACL rules

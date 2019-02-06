@@ -3,11 +3,12 @@
 <div class="container">
   <section class="jumbotron">
     <div class="container text-center">
-      <h1>LoRa Server, open-source LoRaWAN network-server</h1>
-      <h3>Sponsored by
+      <h1>LoRa Server, 开源的 LoRaWAN 网络服务器（network-server）</h1>
+      <h3>
         <a href="http://www.cablelabs.com">
           <strong>Cable</strong>Labs</a>
         <sup>&reg;</sup>
+        赞助
       </h3>
     </div>
   </section>
@@ -16,12 +17,9 @@
 
   <section class="intro text-center py-3">
     <p class="content">
-      The LoRa Server project provides open-source components for building LoRaWAN networks. Together they form a ready-to-use
-      solution, including an user-friendly web-interface and gRPC and REST APIs. Components can also be swapped out for
-      customization or when integrating LoRa Server into existing infrastructures. All components are licensed under the
-      MIT license and can be used for commercial purposes.
+      LoRa Server 项目提供构建LoRaWAN网络的开源组件。提供了一个可直接部署使用的解决方案，包括用户友好的web界面，gRPC 和 REST 接口。这些组件可以定制化，或者集成到现有的硬件里。所有组件是MIT授权，可以商用。
     </p>
-    <p><a href="/overview/" class="btn btn-outline-primary">Get started</a></p>
+    <p><a href="/overview/" class="btn btn-outline-primary">起步</a></p>
   </section>
 
   <hr />
@@ -38,25 +36,25 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="/img/screenshots/web_applications.png" alt="Applications" />
+            <img class="d-block w-100" src="/img/screenshots/web_applications.png" alt="应用" />
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/screenshots/web_nodes.png" alt="Devices" />
+            <img class="d-block w-100" src="/img/screenshots/web_nodes.png" alt="设备" />
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/screenshots/web_node_details.png" alt="Live device data" />
+            <img class="d-block w-100" src="/img/screenshots/web_node_details.png" alt="设备实施数据" />
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/img/screenshots/swagger.png" alt="Swagger API interface" />
+            <img class="d-block w-100" src="/img/screenshots/swagger.png" alt="Swagger API 界面" />
           </div>
         </div>
         <a class="carousel-control-prev" href="#las_screenshots" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+          <span class="sr-only">前一张</span>
         </a>
         <a class="carousel-control-next" href="#las_screenshots" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+          <span class="sr-only">后一张</span>
         </a>
       </div>
 
@@ -66,95 +64,79 @@
   <hr />
 
   <section class="features py-3">
-    <h2 class="text-center">Feature highlights</h2>
+    <h2 class="text-center">功能</h2>
     <div class="row py-3">
       <div class="col-sm-4">
-        <h4>Class-A support</h4>
+        <h4>支持Class-A</h4>
         <p class="content">
-          End-devices of Class A allow for bi-directional communications whereby each end-device‘s uplink transmission is followed
-          by two short downlink receive windows. The transmission slot scheduled by the end-device is based on its own
-          communication needs with a small variation based on a random time basis (ALOHA-type of protocol).
+          Class A 节点，允许双向通信，每一个上行通信跟着两个短的下行窗口。终端节点的传输时隙（transmission slot）基于其自身通信需要有一个随机时间变化（ALOHA类型的协议）。
         </p>
       </div>
       <div class="col-sm-4">
-        <h4>Class-B support</h4>
+        <h4>支持Class-B</h4>
         <p class="content">
-          End-devices of Class B allow for more receive slots. In addition to the Class A random receive windows, Class B devices open
-          extra receive windows at scheduled times. In order for the End-device to open it receive window at the scheduled
-          time it receives a time synchronized Beacon from the gateway.
+          Class B 节点，允许更多的接受时隙（recieve slot），除了Class A节点的随机接受窗口，Class B节点在特定时间还会打开接受串口。为了让节点在预定的时间打开接受窗口，需要节点和网关（基站）之间做时间信标（time synchronized Beacon）同步。
         </p>
       </div>
       <div class="col-sm-4">
-        <h4>Class-C support</h4>
+        <h4>支持Class-C</h4>
         <p class="content">
-          End-devices of Class C have nearly continuously open receive windows, only closed when transmitting. Class C end-device will
-          use more power to operate than Class A or Class B but they offer the lowest latency for server to end-device
-          communication.
+          Class C 节点，基本上是连续的打开接收窗口，仅在发送时关闭，所以比Class A和Class B类节点耗电，适合常供电类的场景。但他们为服务器和终端节点提供最低延迟的通信。
         </p>
       </div>
     </div>
 
     <div class="row py-3">
       <div class="col-sm-4">
-        <h4>Adaptive data-rate</h4>
+        <h4>自适应的data-rate</h4>
         <p class="content">
-          When the end-device has ADR enabled, LoRa Server will ensure that the device will operate using the most ideal data-rate
-          and tx-power. this will not only save energy at the device-side, but will also optimize the usage of the radio
-          spectrum, lowering the risk of collisions.
+          当终端设备启用了ADR（adaptive data-rate）时，LoRa Server将确保设备使用最理想的 数据速率（data-rate）和发射功率（tx-power）。 不仅可以节省节点的功耗，还能优化无线电频谱的使用，降低碰撞风险。
         </p>
       </div>
 
       <div class="col-sm-4">
-        <h4>Live frame-logging</h4>
+        <h4>实时帧记录（frame-logging）</h4>
         <p class="content">
-          LoRa (App) Server provides live frame-logging per gateway and device. It will display all the RX / TX meta-data, together
-          with the raw LoRaWAN PHYPayload in a readable format. It is like Wireshark for LoRaWAN!
+          LoRa (App) Server 应用服务器为每个网关和节点提供实时帧记录，显示所有的 发送和接收 元数据、可读的 LoRaWAN PHYPayload原始数据，类似LoRaWAN的抓包工具。
         </p>
       </div>
 
       <div class="col-sm-4">
-        <h4>Channel (re)configuration</h4>
+        <h4>频道配置、充配置</h4>
         <p class="content">
-          Whether you want to use a sub-set of the LoRaWAN defined channels (e.g. for the US band) or want to configure additional
-          channels (e.g. for the EU band), LoRa Server will make sure the device stays always in sync with the network
-          configured channels (using the CFList field and / or mac-commands).
+          不管是否要使用LoRaWAN定义的通道的子集（比如美国频段），还是想要配置其他通道（如欧盟频段），LoRa Server 会确保终端节点和网络保持通道的同步 (使用 CFList 字段或mac命令)。
         </p>
       </div>
     </div>
 
     <div class="row py-3">
       <div class="col-sm-4">
-        <h4>Multi-tenant</h4>
+        <h4>多租户 Multi-tenant</h4>
         <p class="content">
-          LoRa App Server supports hosting multiple organizations to which (administrator) users can be assigned. By using PBKDF2 password
-          hashing, LoRa App Server facilitates the integration with MQTT broker authentication and authorization so that organizations
-          will only be able to see their own device payloads.
+          LoRa App Server 应用服务器支持托管可以分配用户（管理员）的多个不同组组织。使用 PBKDF2密码，LoRa 应用服务器可以和MQTT代理集成 身份验证和授权，这样不同组织就可以看到他们自己的节点数据。
         </p>
       </div>
 
       <div class="col-sm-4">
-        <h4>APIs and integration</h4>
+        <h4>接口与集成</h4>
         <p class="content">
-          All components provide gRPC and / or REST APIs to enable the integration with external services. By default all application
-          data is published over MQTT channels. Per application HTTP endpoints can be setup for application data and events.
+          所有组件提供 gRPC 或 REST接口，与外部服务集成。默认情况下，所有的应用数据通过MQTT通道发布，每个应用的数据、事件都可以设定HTTP端点（endpoint）。
         </p>
       </div>
 
       <div class="col-sm-4">
-        <h4>LoRaWAN 1.0 and 1.1 compatible</h4>
+        <h4>LoRaWAN 1.0/1.1适配</h4>
         <p class="content">
-          LoRa Server supports both LoRaWAN 1.0 and LoRaWAN 1.1 devices, including all Regional Parameter Specification
-          revisions and bands.
+          LoRa Server 支持 LoRaWAN 1.0 和 LoRaWAN 1.1 设备，包括所有区域（国家）参数规范和带宽。
         </p>
       </div>
     </div>
 
     <div class="row py-3">
       <div class="col-sm-12">
-        <h4 class="text-center">And there is much more...</h4>
+        <h4 class="text-center">更多的...</h4>
         <p class="content text-center">
-          Please refer to the <a href="/overview/">LoRa Server project documentation</a> to learn more about all the features
-          and configuration options!
+          请参考 <a href="/overview/">LoRa Server项目文档</a>，了解所有的功能点，以及配置选项！
         </p>
       </div>
     </div>
@@ -165,7 +147,7 @@
   <section class="lpwanserver py-3">
     <h2 class="text-center">LPWAN Server by CableLabs</h2>
     <p class="content text-center">
-      For unifying the management of multiple LPWAN technologies or LoRaWAN networks, please take a look at the open-source <a href="https://lpwanserver.com">LPWAN Server project</a>.
+      为统一多个LPWAN技术或LoRaWAN网络的管理，可以参见开源的 <a href="https://lpwanserver.com">LPWAN Server 项目</a>.
     </p>
   </section>
 
@@ -175,22 +157,22 @@
     <h2 class="text-center">Support</h2>
     <div class="row py-3">
       <div class="col-sm-4">
-        <h4>Reporting bugs</h4>
+        <h4>Bug提交</h4>
         <p class="content">
-          Please report a bug by creating an issue at the related GitHub repository.
-          GitHub links can be found at the documentation page of each component.
+          在github repo上创建issue即可，对应链接再每一个组件的文档页面能找到。
         </p>
       </div>
       <div class="col-sm-4">
-        <h4>Community support</h4>
+        <h4>社区支持</h4>
         <p class="content">
-            For questions and community support, please refer to <a href="https://forum.loraserver.io">forum.loraserver.io</a>.
+            相关问题和社区支持请访问<a href="https://forum.loraserver.io">forum.loraserver.io</a>.
         </p>
       </div>
       <div class="col-sm-4">
-        <h4>Commercial support</h4>
+        <h4>商业支持</h4>
         <p class="content">
-          For commercial support contact <a href="http://www.brocaar.com">Orne Brocaar</a>, the author of the LoRa Server project.
+          原作者：<a href="http://www.brocaar.com">Orne Brocaar</a>；
+          翻译作者：<a href="mailto:leouzdc@qq.com">bigtran</a>
         </p>
       </div>
     </div>
@@ -199,7 +181,7 @@
   <hr />
 
   <section class="sponsors py-3">
-    <h2 class="text-center">Sponsors</h2>
+    <h2 class="text-center">赞助商</h2>
     <div class="row py-3">
       <div class="col-sm-4">
         <a href="http://www.cablelabs.com/">

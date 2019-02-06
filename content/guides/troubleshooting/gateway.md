@@ -6,7 +6,7 @@ menu:
 description: Troubleshooting gateway and LoRa Gateway Bridge issues.
 ---
 
-# Troubleshooting gateway connectivity
+# 网关连接 故障排除
 
 This guide helps you to troubleshoot gateway connectivity issues and to find the
 underlying cause. This guide assumes you already have the
@@ -18,7 +18,7 @@ We will validate in this guide:
 * If the [LoRa Gateway Bridge](/lora-gateway-bridge/) is receiving data from the packet-forwarder
 * If LoRa Gateway Bridge is publishing the data to the MQTT broker
 
-## Semtech packet-forwarder sends data?
+## Semtech packet-forwarder 发送数据吗？
 
 The first step starts at the source of the data, the gateway. To make sure your
 gateway is actually receiving device data, you can use `tcpdump` to monitor
@@ -47,7 +47,7 @@ When you see that data is sent by the gateway, but not received by your
 machine / server, then likely there is a firewall inbetween that is blocking
 the data.
 
-### Expected tcpdump output
+### tcpdump 有输出吗？
 
 As the packet-forwarder sends regular "ping" messages, there is no need for
 your device to send data. You should see a regular data-exchange in the
@@ -82,7 +82,7 @@ What we see in this log:
 * `localhost.1700 > localhost.34268`: packet sent from the LoRa Gateway Bridge to the packet-forwarder
 
 
-### No tcpdump output?
+### 没有 tcpdump 输出？
 
 When `tcpdump` does not show anything, then likely the packet-forwarder on
 the gateway is not running, or the packet-forwarder is misconfigured.
@@ -116,7 +116,7 @@ any changes, don’t forget to restart the packet-forwarder.
 See [https://github.com/Lora-net/packet_forwarder/tree/master/lora_pkt_fwd](https://github.com/Lora-net/packet_forwarder/tree/master/lora_pkt_fwd)
 for more information about the packet-forwarder.
 
-## LoRa Gateway Bridge receives data?
+## LoRa Gateway Bridge 接收到数据？
 
 When the previous step confirmed that the gateway is sending data, you need to
 confirm that the [LoRa Gateway Bridge](/lora-gateway-bridge/) is receiving
@@ -146,14 +146,14 @@ INFO[0267] mqtt: publishing message qos=0 topic=gateway/7276ff002e062c18/rx
 If you see these logs, then this indicates that the LoRa Gateway Bridge
 components receives the data sent by the packet-forwarder.
 
-### No log output?
+### 没有log 日志输出？
 
-#### Double-check gateway
+#### 仔细检查网关
 
 When you don't see any logs printed when your device sends an uplink message
 double-check if the packet-forwarder sends data (previous section).
 
-#### LoRa Gateway Bridge active?
+#### LoRa Gateway Bridge 是否启动？
 
 You also need to make sure that the LoRa Gateway Bridge is actually active.
 You can use the following command to check this:
@@ -173,14 +173,14 @@ If no LoRa Gateway Bridge process is active, please refer to the
 [LoRa Gateway Bridge Install](/lora-gateway-bridge/install/)
 documentation.
 
-#### LoRa Gateway Bridge configuration
+#### LoRa Gateway Bridge 配置
 
 When you have completed the previous steps succesfully, then packet-forwarder
 data is received by your machine / server, but is not seen by the LoRa Gateway Bridge service.
 This probably means that LoRa Gateway Bridge is binding on a different network
 interface and / or port. Please check your `lora-gateway-bridge.toml` [Configuration](/lora-gateway-bridge/install/config).
 
-## LoRa Gateway Bridge publishes data?
+## LoRa Gateway Bridge 发布数据吗？
 
 If you have confirmed that the LoRa Gateway Bridge component receives the
 data sent by the packet-forwarder, it is time to confirm LoRa Gateway Brige is

@@ -7,27 +7,27 @@ menu:
 description: Overview of the LoRa Server architecture and how components are connected.
 ---
 
-# System architecture
+# 系统架构
 
 A LoRa Server architecture consists of multiple components:
 
 ![architecture](/img/architecture.png)
 
-## LoRaWAN devices
+## LoRaWAN 节点
 
 The IoT devices (not pictured in the image above) are the devices
 sending data to the LoRa network (through the LoRa gateways). These devices
 could be for example sensors measuring air quality, temperature, humidity,
 location...
 
-## LoRa gateway
+## LoRa 网关（基站）
 
 The gateways are receiving data from the devices and typically run an
 implementation of the [packet-forwarder](https://github.com/Lora-net/packet_forwarder)
 software. This software is responsible for the interface with the LoRa hardware
 on the gateway.
 
-## LoRa Gateway Bridge
+## 转发器 LoRa Gateway Bridge
 
 The [LoRa Gateway Bridge](/lora-gateway-bridge/)
 component is responsible for the communication with
@@ -41,7 +41,7 @@ over MQTT. The advantages over directly working with the UDP protocol are:
 * It enables a secure connection between your gateways and the network
   (using MQTT over TLS)
 
-## LoRa Server
+## 网络服务器 LoRa Server
 
 The [LoRa Server](/loraserver/) component provides the LoRaWAN network-server
 component, responsible for managing the state of the network.
@@ -56,12 +56,12 @@ keep these items in queue, until it is able to send to one of the gateways.
 LoRa Server provides an API which can be used for integration or when
 implementing your own application-server.
 
-## LoRa Geo Server
+## 定位服务器 LoRa Geo Server
 
 The [LoRa Geo Server](/lora-geo-server/) component (optional) provides
 geolocation services for resolving location of each device.
 
-## LoRa App Server
+## 应用服务器 LoRa App Server
 
 The [LoRa App Server](/lora-app-server/) component
 implements a LoRaWAN application-server compatible
@@ -72,7 +72,7 @@ To receive the application payload sent by one of your devices, you can
 use one of the integrations that LoRa App Server provides (e.g. MQTT, HTTP
 or directly write to an InfluxDB database).
 
-## Application
+## 应用 Application
 
 The end-application (not provided) handles the application-payloads sent by
 your devices. It receives this data from LoRa App Server, using one of the

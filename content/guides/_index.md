@@ -7,4 +7,4 @@ menu:
 hidden: true
 ---
 
-# LoRa Server project guides
+# LoRa Server 项目手册

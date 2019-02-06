@@ -7,7 +7,7 @@ menu:
 description: Information how you can contribute to the LoRa Server project.
 ---
 
-# Contribute
+# 贡献
 
 There are a couple of ways to get involved:
 
@@ -16,7 +16,7 @@ There are a couple of ways to get involved:
 * Help fixing reported issues by making pull-requests
 * Fix issues or improve documentation by creating pull-requests
 
-## Components
+## 组件
 
 Please refer to the following pages to learn more about contributing to
 each LoRa Server project component:

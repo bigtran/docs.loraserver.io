@@ -7,15 +7,15 @@ menu:
 description: Quickstart guide on how to get started with the LoRa Server project using Docker Compose.
 ---
 
-# Quickstart using Docker-Compose
+# Docker-Compose的快速起步
 
 [Docker Compose](https://docs.docker.com/compose/) (part of Docker) makes
 it possible to orchestrate the configuration of multiple Docker containers
 at once using a `docker-compose.yml` file.
 
-## Requirements
+## 环境需求
 
-### Install Docker
+### 安装 Docker
 
 Please refer to the [Get Started with Docker](https://www.docker.com/get-started)
 guide to install Docker for MacOS or Windows. When installing Docker on Linux,
@@ -26,15 +26,15 @@ please refer to one of the following guides:
 * [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
 * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
-### Install Compose
+### 安装 Compose
 
 To install Docker Compose on Linux, please refer to the
 [Install Compose on Linux systems](https://docs.docker.com/compose/install/#install-compose)
 guide. You can skip this step for MacOS and Windows.
 
-## LoRa Server
+## LoRa Server 网络服务器
 
-### Configure
+### 配置
 
 The LoRa Server project provides an example `docker-compose.yml` file that
 you can use as a starting-point. This example can be found at
@@ -50,7 +50,7 @@ $ cd loraserver-docker
 
 
 
-### Start
+### 启动
 
 After you have updated the configuration, you can run the following command
 to start all Docker containers:
@@ -62,7 +62,7 @@ $ docker-compose up
 Please note that the first time you execute this command, there might be
 some errors logged as the database needs to be initialized.
 
-## Add network-server
+## 添加网络服务器
 
 As each container has its own hostname, you must use the hostname of the 
 `loraserver` container when adding the network-server in the LoRa App Server

@@ -7,7 +7,7 @@ menu:
 description: Quickstart tutorial on how to install all components on a Debian / Ubuntu system.
 ---
 
-# Quickstart on Debian or Ubuntu
+# Debian / Ubuntu 快速起步
 
 This tutorial describes the steps needed to setup the LoRa Server project
 **including all requirements** on a single machine. It has been tested on
@@ -20,8 +20,7 @@ the following distributions:
 Please refer to the other install pages for more generic installation
 instructions.
 
-
-## Assumptions
+## 美好的假设
 
 Many configurations of these packages is possible. Dependent software packages
 could be installed on any number of remote servers, and the packages themselves
@@ -42,7 +41,7 @@ installation changes are beyond the scope of this document. However, you
 should be able to find the information here that would make these changes
 relatively straight-forward.
 
-## Install requirements
+## 安装要求
 
 * **MQTT broker** - A publish/subscribe protocol that allows users to publish
   information under topics that others can subscribe to. A popular
@@ -57,7 +56,7 @@ Use the package manager `apt` to install these dependencies:
 sudo apt install mosquitto mosquitto-clients redis-server redis-tools postgresql 
 {{< /highlight >}}
 
-### Setup PostgreSQL databases and users
+### 设置 PostgreSQL 数据库和用户
 
 To enter the command line utility for PostgreSQL:
 
@@ -93,7 +92,7 @@ create extension pg_trgm;
 \q
 {{< /highlight >}}
 
-## Setup LoRa Server software repository
+## 配置 LoRa Server 软件repo
 
 The LoRa Server project provides a repository that is compatible with the
 Ubuntu apt package system. First make sure that both `dirmngr` and
@@ -121,7 +120,7 @@ Update the apt package cache:
 sudo apt update
 {{< /highlight >}}
 
-## Install LoRa Gateway Bridge
+## 安装 LoRa Gateway Bridge
 
 **Note:** when you intent to run the [LoRa Gateway Bridge](/lora-gateway-bridge/)
 only on the gateways itself, you can skip this step.
@@ -145,7 +144,7 @@ sudo systemctl start lora-gateway-bridge
 sudo systemctl enable lora-gateway-bridge
 {{< /highlight >}}
 
-## Installing LoRa Server
+## 安装 LoRa Server 网络服务器
 
 Install the package using apt:
 
@@ -178,7 +177,7 @@ Print the LoRa Server log-output:
 sudo journalctl -f -n 100 -u loraserver
 {{< /highlight >}}
 
-### EU868 configuration example
+### EU868 配置示例
 
 {{<highlight toml>}}
 [general]
@@ -219,7 +218,7 @@ net_id="000000"
   max_dr=5
 {{< /highlight >}}
 
-### US915 configuration example
+### US915 配置示例
 
 {{<highlight toml>}}
 [general]
@@ -236,7 +235,7 @@ net_id="000000"
   enabled_uplink_channels=[0, 1, 2, 3, 4, 5, 6, 7]
 {{< /highlight >}}
 
-## Installing LoRa App Server
+## 安装 LoRa App Server 应用服务器
 
 Install the package using apt:
 
@@ -261,7 +260,7 @@ dsn="postgres://loraserver_as:dbpassword@localhost/loraserver_as?sslmode=disable
   jwt_secret="verysecret"
 {{< /highlight >}}
 
-Start the LoRa App Server service:
+启动 LoRa App Server 应用服务器的服务：
 
 {{<highlight bash>}}
 # start lora-app-server
@@ -277,7 +276,7 @@ Print the LoRa App Server log-output:
 sudo journalctl -f -n 100 -u lora-app-server
 {{< /highlight >}}
 
-## Optional: install LoRa Gateway Bridge on the gateway
+## 可选: 在网关上安装 LoRa Gateway Bridge
 
 It is advised to run LoRa Gateway Bridge on each gateway itself, to enable a
 secure connection between your gateways and your server.
@@ -286,7 +285,7 @@ As there are many types of gateways available, please refer to the
 LoRa Gateway Bridge instructions for
 [installing LoRa Gateway Bridge on the gateway](/lora-gateway-bridge/install/gateway/).
 
-## Setting up your first device
+## 配置第一个节点
 
 To setup your first device, please refer to the [First gateway and device]({{<relref "first-gateway-device.md">}})
 guide.

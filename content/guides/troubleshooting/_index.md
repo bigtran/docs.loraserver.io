@@ -8,7 +8,7 @@ menu:
 description: Guides on troubleshooting various isses.
 ---
 
-# Troubleshooting guides
+# 故障排除指南
 
 The guides below will help you to troubleshoot common issues and
 mis-configurations:

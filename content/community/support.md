@@ -7,9 +7,9 @@ menu:
 description: Where to report bugs, discuss new features and get support from the community.
 ---
 
-# Support
+# 支持
 
-## Bugs & features
+## Bugs 和 功能
 
 Did you find a bug or want to request a new feature? Please first check if
 this issue has already been reported. If not, please create an issue. Each
@@ -19,6 +19,6 @@ component has its own issue tracker:
 * [https://github.com/brocaar/loraserver/issues](https://github.com/brocaar/loraserver/issues)
 * [https://github.com/brocaar/lora-app-server/issues](https://github.com/brocaar/lora-app-server/issues)
 
-## Questions
+## 问题？
 
 For support questions, please refer to the [LoRa Server project forum](https://forum.loraserver.io/).

@@ -7,7 +7,7 @@ menu:
 description: Getting started with the LoRa Server project using Vagrant and / or Ansible.
 ---
 
-# Ansible based deployments
+# 基于Ansible的部署
 
 [Ansible](https://docs.ansible.com/) is an open-source tool for automating
 deployment and server-management related steps.
@@ -18,7 +18,7 @@ used to deploy LoRa Server, including the setup of all requirements.
 The source of this playbook, including additional documentation how to
 use this, can be found at [https://github.com/brocaar/loraserver-setup](https://github.com/brocaar/loraserver-setup).
 
-## Local VM deployment using Vagrant
+## 基于Vagrant的本地虚拟机部署
 
 [Vagrant](https://www.vagrantup.com/) is a tool for automating the creation
 of virtual machines. It can integrate with Ansible so that it not only create
@@ -36,7 +36,7 @@ As this is using exactly the same Ansible-playbook as for remote deployments,
 this can also be used for testing before doing a remote deployment, e.g.
 when making modifications to the playbook.
 
-## Remote deployment
+## 服务器部署
 
 Ansible can also be used to do remote deployments. You need to setup a
 so-called inventory of servers, to which Ansible will connect for executing

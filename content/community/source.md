@@ -7,7 +7,7 @@ menu:
 description: How to get the LoRa Server project source and how to compile this into executable binaries.
 ---
 
-# Source
+# 源码
 
 All source-code is hosted on GitHub:
 

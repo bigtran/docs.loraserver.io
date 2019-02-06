@@ -6,7 +6,7 @@ menu:
 description: Troubleshooting network-server (LoRa Server) related issues.
 ---
 
-# Troubleshooting network-server issues
+# 网络服务器 故障排除
 
 This guide helps you to troubleshoot network-server related connectivity
 issues. This guide assumes that your gateway is connected and that the LoRa
@@ -23,7 +23,7 @@ In this guide we will validate:
 * If the received data is valid (MIC and frame-counters)
 * If the received payload is forwarded to [LoRa App Server]({{<relref "application-server.md">}})
 
-## LoRa Server receives data?
+## LoRa Server 接收数据？
 
 To find out if [LoRa Server](/loraserver/) is receiving messages from your
 gateway, you should refer to the logs. Depending how LoRa Server was installed,
@@ -32,7 +32,7 @@ one of the following commands will show you the logs:
 * `journalctl -f -n 100 -u loraserver`
 * `tail -f -n 100 /var/log/loraserver/loraserver.log`
 
-### Expected log output
+### 期望的日志输出
 
 {{<highlight text>}}
 INFO[0163] backend/gateway: uplink frame received
@@ -45,7 +45,7 @@ In this log, LoRa Server has processed the uplink frame, and forwarded the
 application payload to the `ApplicationServerService` API
 (provided by [LoRa App Server](/lora-app-server/)).
 
-### Invalid MIC or frame-counter
+### MIC 或 帧计数（frame-counter）不合规？
 
 {{<highlight text>}}
 INFO[0581] backend/gateway: uplink frame received
@@ -58,14 +58,14 @@ map this to a device-session. The cause could be:
 * The device-session (activation) does not exist the device
 * The session-keys do not match the session-keys as known by the network-server
 
-#### OTAA device
+#### OTAA 类节点
 
 Try to re-activate your device. The activation did not match any of the
 device-sessions stored in the database. After a long time of inactivity, it
 could have expired. Also make sure that the LoRaWAN version selected in the
 Device-profile matches the implemented LoRaWAN version by the device!
 
-#### ABP device
+#### ABP 类节点
 
 In case of an ABP device, there are a couple of things that could case this
 error:

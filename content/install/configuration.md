@@ -7,7 +7,7 @@ menu:
 description: Instructions on how to configure the LoRa Server components.
 ---
 
-# Configuring the LoRa Server project applications
+# 配置 LoRa Server 项目的应用
 
 The LoRa server project components are configured by configuration files,
 which are by default loaded from (in this order):
@@ -35,7 +35,7 @@ loraserver configfile > loraserver.toml
 loraserver configfile -c loraserver-old.toml > loraserver.toml
 {{< /highlight >}}
 
-## Configuration reference
+## 参考链接
 
 * [LoRa App Server configuration](/lora-app-server/install/config/)
 * [LoRa Server configuration](/loraserver/install/config/)
